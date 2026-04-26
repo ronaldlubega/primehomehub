@@ -1,0 +1,105 @@
+[
+    {
+        "id": 1775044664,
+        "type": "new_user",
+        "title": "New Customer Registration",
+        "message": "New customer registered: mayiko@gmail.com (mayiko@gmail.com)",
+        "data": {
+            "id": 1775048815,
+            "name": "mayiko@gmail.com",
+            "email": "mayiko@gmail.com",
+            "password": "$2y$10$tbwUEt6zLVVtlCp5IcIcx.kcqRRJvYuKoapnLaNcXlya2qW6DawLS",
+            "role": "client",
+            "phone": "",
+            "location": "Kampala, Uganda",
+            "gender": "",
+            "avatar": null,
+            "preferences": {
+                "currency": "UGX",
+                "newsletter": false,
+                "notifications": true
+            },
+            "address": {
+                "street": "",
+                "city": "Kampala",
+                "country": "Uganda",
+                "postal_code": "256"
+            },
+            "last_login": "2026-04-01 11:57:44",
+            "login_count": 1,
+            "status": "active",
+            "created_at": "2026-04-01 11:57:44",
+            "updated_at": "2026-04-01 11:57:44"
+        },
+        "timestamp": "2026-04-01 11:57:44",
+        "read": true
+    },
+    {
+        "id": 1772898700,
+        "type": "new_user",
+        "title": "New Customer Registration",
+        "message": "New customer registered: Tomas (tomas@gmail.com)",
+        "data": {
+            "id": 1772898700,
+            "role": "client",
+            "name": "Tomas",
+            "contact": "0755049100",
+            "email": "tomas@gmail.com",
+            "location": "Ndejje",
+            "gender": "Male",
+            "password": "$2y$10$olvy8DwylEo8LVay\/EWJ\/ur9GNOB29\/qqajIarWSCLX.WVV8kmRCC",
+            "created_at": "2026-03-07 15:51:40",
+            "status": "active",
+            "last_login": null,
+            "login_count": 0,
+            "avatar": null,
+            "preferences": {
+                "currency": "UGX",
+                "newsletter": false,
+                "notifications": true
+            },
+            "address": {
+                "street": "",
+                "city": "Ndejje",
+                "country": "Uganda",
+                "postal_code": "256"
+            }
+        },
+        "timestamp": "2026-03-07 15:51:40",
+        "read": false
+    },
+    {
+        "id": 1772896540,
+        "type": "new_user",
+        "title": "New Customer Registration",
+        "message": "New customer registered: Jonas (admin@primehub.com)",
+        "data": {
+            "id": 2171,
+            "name": "Jonas",
+            "email": "admin@primehub.com",
+            "password": "aDminPrimeHub",
+            "role": "user",
+            "timestamp": "2026-03-07 15:15:40",
+            "status": "active"
+        },
+        "timestamp": "2026-03-07 15:15:40",
+        "read": false
+    },
+    {
+        "id": 1772895909,
+        "type": "new_user",
+        "title": "New Customer Registration",
+        "message": "New customer registered: Jonas (jonas@gmail.com)",
+        "data": {
+            "id": 6639,
+            "name": "Jonas",
+            "email": "jonas@gmail.com",
+            "password": "Admin123.",
+            "role": "user",
+            "timestamp": "2026-03-07 15:05:09",
+            "status": "active"
+        },
+        "timestamp": "2026-03-07 15:05:09",
+        "read": false
+    }
+]

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Planner - Prime Home Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* ROOM PLANNER STYLES */
+        .room-planner-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 1.5rem;
+            min-height: calc(100vh - 80px);
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+        }
+
+        .canvas-section {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .canvas-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #eee;
+        }
+
+        .canvas-header h5 {
+            margin: 0;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .canvas-controls {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .canvas-btn {
+            padding: 0.5rem 0.75rem;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .canvas-btn:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .canvas-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        #canvasContainer {
+            flex: 1;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 2px solid #eee;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #plannerCanvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            cursor: grab;
+        }
+
+        #plannerCanvas:active {
+            cursor: grabbing;
+        }
+
+        .sidebar {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        .sidebar-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar-section-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+        }
+
+        .room-settings {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .setting-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .setting-group label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .setting-group input {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+
+        .furniture-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+
+        .furniture-btn {
+            padding: 0.75rem;
+            background: white;
+            border: 2px solid #667eea;
+            color: #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .furniture-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .furniture-btn i {
+            font-size: 1.2rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .action-btn {
+            padding: 0.75rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .action-btn.secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            gap: 0.5rem;
+        }
+
+        .action-btn.danger {
+            background: #dc3545;
+        }
+
+        .action-btn.danger:hover {
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+        }
+
+        .furniture-list {
+            max-height: 250px;
+            overflow-y: auto;
+            border: 1px solid #eee;
+            border-radius: 6px;
+        }
+
+        .furniture-item {
+            padding: 0.75rem;
+            border-bottom: 1px solid #eee;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .furniture-item:hover {
+            background: #667eea05;
+        }
+
+        .furniture-item.active {
+            background: #667eea15;
+            border-left: 3px solid #667eea;
+        }
+
+        .furniture-item-info {
+            flex: 1;
+        }
+
+        .furniture-item-name {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .furniture-item-dims {
+            font-size: 0.75rem;
+            color: #999;
+        }
+
+        .delete-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: all 0.2s;
+        }
+
+        .delete-btn:hover {
+            background: #c82333;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #999;
+            margin-top: 0.25rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .room-planner-wrapper {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .sidebar {
+                max-height: auto;
+                order: 2;
+            }
+
+            .canvas-section {
+                order: 1;
+            }
+
+            .furniture-buttons {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .canvas-controls {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="bi bi-palette"></i> Prime Home Hub
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="visualizer.html">Visualizer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mood-boards.html">Mood Boards</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="room-planner.html">Room Planner</a></li>
+                </ul>
+                <ul class="navbar-nav ms-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">
+                            <i class="bi bi-cart"></i> <span id="cartBadge" class="badge bg-danger">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            <i class="bi bi-person"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" id="userButton">Login</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="room-planner-wrapper">
+        <!-- CANVAS AREA -->
+        <div class="canvas-section">
+            <div class="canvas-header">
+                <h5><i class="bi bi-grid-3x3-gap"></i> Room Design Canvas</h5>
+                <div class="canvas-controls">
+                    <button id="gridToggle" class="canvas-btn active" title="Toggle Grid">
+                        <i class="bi bi-table"></i>
+                    </button>
+                    <button id="snapToggle" class="canvas-btn" title="Snap to Grid">
+                        <i class="bi bi-magnet"></i>
+                    </button>
+                    <button id="zoomIn" class="canvas-btn" title="Zoom In">
+                        <i class="bi bi-zoom-in"></i>
+                    </button>
+                    <button id="zoomOut" class="canvas-btn" title="Zoom Out">
+                        <i class="bi bi-zoom-out"></i>
+                    </button>
+                    <button id="resetZoom" class="canvas-btn" title="Reset View">
+                        <i class="bi bi-arrow-clockwise"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="canvasContainer">
+                <canvas id="plannerCanvas"></canvas>
+            </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <!-- ROOM SETTINGS -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">Room Settings</div>
+                <div class="room-settings">
+                    <div class="setting-group">
+                        <label>Room Name</label>
+                        <input type="text" id="roomName" value="Living Room" placeholder="Room name">
+                    </div>
+                    <div class="setting-group">
+                        <label>Width (units)</label>
+                        <input type="number" id="roomWidth" value="400" min="200" max="800">
+                    </div>
+                    <div class="setting-group">
+                        <label>Height (units)</label>
+                        <input type="number" id="roomHeight" value="300" min="150" max="600">
+                    </div>
+                </div>
+            </div>
+
+            <!-- FURNITURE -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">Add Furniture</div>
+                <div class="furniture-buttons">
+                    <button id="addSofaBtn" class="furniture-btn">
+                        <i class="bi bi-sofa"></i> Sofa
+                    </button>
+                    <button id="addChairBtn" class="furniture-btn">
+                        <i class="bi bi-chair"></i> Chair
+                    </button>
+                    <button id="addTableBtn" class="furniture-btn">
+                        <i class="bi bi-table"></i> Table
+                    </button>
+                    <button id="addDeskBtn" class="furniture-btn">
+                        <i class="bi bi-pencil"></i> Desk
+                    </button>
+                    <button id="addBedBtn" class="furniture-btn">
+                        <i class="bi bi-square"></i> Bed
+                    </button>
+                    <button id="addShelvingBtn" class="furniture-btn">
+                        <i class="bi bi-bookshelf"></i> Shelving
+                    </button>
+                </div>
+            </div>
+
+            <!-- CONTROLS -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">Edit</div>
+                <div class="action-buttons">
+                    <button id="rotateLeftBtn" class="action-btn">
+                        <i class="bi bi-arrow-counterclockwise"></i> Rotate -15°
+                    </button>
+                    <button id="rotateRightBtn" class="action-btn">
+                        <i class="bi bi-arrow-clockwise"></i> Rotate +15°
+                    </button>
+                    <button id="deleteSelectedBtn" class="action-btn danger">
+                        <i class="bi bi-trash"></i> Delete
+                    </button>
+                </div>
+            </div>
+
+            <!-- FURNITURE LIST -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">Furniture List</div>
+                <ul class="furniture-list list-unstyled" id="furnitureList">
+                    <li class="text-muted text-center p-2" style="font-size: 0.85rem;">No furniture added</li>
+                </ul>
+            </div>
+
+            <!-- STATS -->
+            <div class="sidebar-section">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value" id="furnitureCount">0</div>
+                        <div class="stat-label">Items</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="scalePercent">100%</div>
+                        <div class="stat-label">Scale</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACTIONS -->
+            <div class="sidebar-section">
+                <div class="action-buttons">
+                    <button id="clearPlanBtn" class="action-btn secondary">
+                        <i class="bi bi-trash"></i> Clear
+                    </button>
+                    <button id="savePlanBtn" class="action-btn">
+                        <i class="bi bi-cloud-check"></i> Save Plan
+                    </button>
+                    <button id="downloadPlanBtn" class="action-btn">
+                        <i class="bi bi-download"></i> Export
+                    </button>
+                </div>
+            </div>
+
+            <!-- SAVED PLANS -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">Saved Plans</div>
+                <div id="savedPlans" style="font-size: 0.85rem; color: #999;">
+                    <small>No saved plans yet</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/room-planner.js"></script>
+</body>
+</html>

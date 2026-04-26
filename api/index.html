@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Home Hub - API Documentation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .navbar {
+            background: rgba(0, 0, 0, 0.8) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .container-main {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 30px auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 1200px;
+        }
+        h1 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #764ba2;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            border-left: 5px solid #667eea;
+            padding-left: 15px;
+        }
+        .endpoint-card {
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+        .endpoint-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .endpoint-method {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: white;
+            margin-right: 10px;
+            font-size: 12px;
+        }
+        .method-get { background: #28a745; }
+        .method-post { background: #007bff; }
+        .method-put { background: #ffc107; }
+        .method-delete { background: #dc3545; }
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .status-ready {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status-new {
+            background: #e7d4f5;
+            color: #721c24;
+        }
+        .feature-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        .feature-box h3 {
+            margin-bottom: 10px;
+        }
+        .table {
+            border-collapse: collapse;
+        }
+        .table th {
+            background: #667eea;
+            color: white;
+            border: none;
+        }
+        .table td {
+            border-color: #e9ecef;
+        }
+        .alert-info {
+            background: #e7f3ff;
+            border-color: #0066cc;
+        }
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">🏠 Prime Home Hub API</a>
+            <span class="navbar-text text-light">v1.0 - Production Ready</span>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-main">
+        <h1>📚 Prime Home Hub API Documentation</h1>
+        
+        <div class="alert alert-info">
+            <strong>✅ Backend Ready!</strong> Your furniture store now has a complete API infrastructure with user authentication, product management, orders, and more.
+        </div>
+
+        <!-- Feature Summary -->
+        <h2>🚀 Available Features</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="feature-box">
+                    <h3>👤 User Authentication</h3>
+                    <p>Register, login, profile management, and session handling</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-box">
+                    <h3>📦 Product Management</h3>
+                    <p>Browse, search, filter products with 12 pre-loaded items</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-box">
+                    <h3>🛒 Order Processing</h3>
+                    <p>Create orders, track status, manage payments</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-box">
+                    <h3>❤️ Wishlist & Reviews</h3>
+                    <p>Save favorite items and submit product reviews</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- API Endpoints -->
+        <h2>🔌 API Endpoints</h2>
+
+        <!-- Users API -->
+        <h3 style="color: #667eea; margin-top: 30px;">Users API</h3>
+        
+        <div class="endpoint-card">
+            <span class="endpoint-method method-post">POST</span>
+            <code>/api/users.php?action=register</code>
+            <span class="status-badge status-ready">Ready</span>
+            <p style="margin-top: 10px;"><strong>Register New User</strong></p>
+            <p>Create a new customer account with email, password, and profile info.</p>
+            <div class="code-block">curl -X POST http://localhost/api/users.php?action=register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "user@example.com",
+    "username": "johndoe",
+    "password": "securepass123",
+    "confirm_password": "securepass123",
+    "first_name": "John",
+    "last_name": "Doe"
+  }'</div>
+        </div>
+
+        <div class="endpoint-card">
+            <span class="endpoint-method method-post">POST</span>
+            <code>/api/users.php?action=login</code>
+            <span class="status-badge status-ready">Ready</span>
+            <p style="margin-top: 10px;"><strong>Login User</strong></p>
+            <p>Authenticate user and return authentication token.</p>
+            <div class="code-block">curl -X POST http://localhost/api/users.php?action=login \
+  -H "Content-Type: application/json" \
+  -d '{"email": "user@example.com", "password": "securepass123"}'</div>
+        </div>
+
+        <div class="endpoint-card">
+            <span class="endpoint-method method-get">GET</span>
+            <code>/api/users.php?action=profile</code>
+            <span class="status-badge status-ready">Ready</span>
+            <p style="margin-top: 10px;"><strong>Get User Profile</strong></p>
+            <p>Retrieve authenticated user's profile information.</p>
+            <p><strong>Requires:</strong> Authorization token in header</p>
+        </div>
+
+        <!-- Products API -->
+        <h3 style="color: #667eea; margin-top: 30px;">Products API</h3>
+
+        <div class="endpoint-card">
+            <span class="endpoint-method method-get">GET</span>
+            <code>/api/products.php?action=list&page=1&limit=20</code>
+            <span class="status-badge status-ready">Ready</span>
+            <p style="margin-top: 10px;"><strong>List Products</strong></p>
+            <p>Get paginated list of all products with optional filtering by category, price, or search term.</p>
+            <table class="table table-sm" style="margin-top: 15px;">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>page</td>
+                        <td>integer</td>
+                        <td>Page number (default: 1)</td>
+                    </tr>
+                    <tr>
+                        <td>limit</td>
+                        <td>integer</td>
+                        <td>Items per page (default: 20)</td>
+                    </tr>
+                    <tr>
+                        <td>category</td>
+                        <td>integer</td>
+                        <td>Filter by category ID</td>
+                    </tr>
+                    <tr>
+                        <td>min_price</td>
+                        <td>decimal</td>
+                        <td>Minimum price filter</td>
+                    </tr>
+                    <tr>
+                        <td>max_price</td>
+                        <td>decimal</td>
+                        <td>Maximum price filter</td>
+                    </tr>
+                    <tr>
+                        <td>sort</td>
+                        <td>string</td>
+                        <td>Sort by: name, price, rating</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="endpoint-card">
+            <span class="endpoint-method method-get">GET</span>
+            <code>/api/products.php?action=search&q=sofa</code>
+            <span class="status-badge status-ready">Ready</span>
+            <p style="margin-top: 10px;"><strong>Search Products</strong></p>
+            <p>Full-text search across product names and descriptions.</p>
+        </div>
+
+        <div class="endpoint-card">
+            <span class="endpoint-method method-get">GET</span>
+            <code>/api/products.php?action=get&id=1</code>
+            <span class="status-badge status-ready">Ready</span>
+            <p style="margin-top: 10px;"><strong>Get Single Product</strong></p>
+            <p>Retrieve detailed information for a specific product including reviews.</p>
+        </div>
+
+        <!-- Orders API -->
+        <h3 style="color: #667eea; margin-top: 30px;">Orders API</h3>
+
+        <div class="endpoint-card">
+            <span class="endpoint-method method-post">POST</span>
+            <code>/api/orders.php?action=create</code>
+            <span class="status-badge status-ready">Ready</span>
+            <p style="margin-top: 10px;"><strong>Create Order</strong></p>
+            <p>Create a new order with items from cart and shipping information.</p>
+            <p><strong>Requires:</strong> Authentication token</p>
+            <div class="code-block">curl -X POST http://localhost/api/orders.php?action=create \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer {token}" \
+  -d '{
+    "items": [
+      {"product_id": 1, "quantity": 2},
+      {"product_id": 3, "quantity": 1}
+    ],
+    "shipping_address": "123 Main Street",
+    "shipping_city": "Kampala",
+    "shipping_country": "Uganda",
+    "shipping_postal": "00256"
+  }'</div>
+        </div>
+
+        <div class="endpoint-card">
+            <span class="endpoint-method method-get">GET</span>
+            <code>/api/orders.php?action=list</code>
+            <span class="status-badge status-ready">Ready</span>
+            <p style="margin-top: 10px;"><strong>Get User Orders</strong></p>
+            <p>Retrieve authenticated user's order history with pagination.</p>
+            <p><strong>Requires:</strong> Authentication token</p>
+        </div>
+
+        <div class="endpoint-card">
+            <span class="endpoint-method method-post">POST</span>
+            <code>/api/orders.php?action=payment&id=1</code>
+            <span class="status-badge status-ready">Ready</span>
+            <p style="margin-top: 10px;"><strong>Process Payment</strong></p>
+            <p>Process payment for an order. Integrate with Stripe/PayPal.</p>
+            <p><strong>Requires:</strong> Authentication token</p>
+        </div>
+
+        <!-- Wishlist API -->
+        <h3 style="color: #667eea; margin-top: 30px;">Wishlist API</h3>
+
+        <div class="endpoint-card">
+            <span class="endpoint-method method-get">GET</span>
+            <code>/api/wishlist.php?action=list</code>
+            <span class="status-badge status-ready">Ready</span>
+            <p style="margin-top: 10px;"><strong>Get Wishlist</strong></p>
+            <p>Retrieve user's saved wishlist items.</p>
+            <p><strong>Requires:</strong> Authentication token</p>
+        </div>
+
+        <div class="endpoint-card">
+            <span class="endpoint-method method-post">POST</span>
+            <code>/api/wishlist.php?action=add</code>
+            <span class="status-badge status-ready">Ready</span>
+            <p style="margin-top: 10px;"><strong>Add to Wishlist</strong></p>
+            <p>Add a product to user's wishlist.</p>
+            <p><strong>Requires:</strong> Authentication token</p>
+        </div>
+
+        <!-- Categories API -->
+        <h3 style="color: #667eea; margin-top: 30px;">Categories API</h3>
+
+        <div class="endpoint-card">
+            <span class="endpoint-method method-get">GET</span>
+            <code>/api/categories.php?action=list</code>
+            <span class="status-badge status-ready">Ready</span>
+            <p style="margin-top: 10px;"><strong>List Categories</strong></p>
+            <p>Get all product categories. No authentication required.</p>
+        </div>
+
+        <!-- Getting Started -->
+        <h2>🚀 Getting Started</h2>
+        
+        <h3>1. Setup Database</h3>
+        <p>Import the database schema at <code>database/database.sql</code> into MySQL:</p>
+        <div class="code-block">mysql -u root prime_home_hub < database/database.sql</div>
+
+        <h3>2. Configure Connection</h3>
+        <p>Update database credentials in <code>includes/database.php</code>:</p>
+        <div class="code-block">define('DB_HOST', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASSWORD', '');
+define('DB_NAME', 'prime_home_hub');</div>
+
+        <h3>3. Test First API Call</h3>
+        <p>Open your browser and test the products endpoint:</p>
+        <div class="code-block">http://localhost/api/products.php?action=list&limit=5</div>
+
+        <h3>4. Register a User</h3>
+        <p>Use curl to register a test account:</p>
+        <div class="code-block">curl -X POST http://localhost/api/users.php?action=register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "test@example.com",
+    "username": "testuser",
+    "password": "Test@1234",
+    "confirm_password": "Test@1234",
+    "first_name": "Test",
+    "last_name": "User"
+  }'</div>
+
+        <!-- Database Info -->
+        <h2>📊 Database Information</h2>
+        
+        <p><strong>Database Name:</strong> prime_home_hub</p>
+        <p><strong>Tables:</strong> 13 (categories, products, users, orders, order_items, wishlist, room_plans, mood_boards, reviews, shipping_info, analytics, backup_logs, activity_logs)</p>
+        <p><strong>Default Products:</strong> 12 furniture items with real Unsplash images</p>
+        <p><strong>Default Categories:</strong> Living Room, Bedroom, Office, Decor</p>
+
+        <!-- Security -->
+        <h2>🔒 Security Features</h2>
+        <ul>
+            <li>✅ Bcrypt password hashing</li>
+            <li>✅ Token-based authentication</li>
+            <li>✅ SQL injection prevention (prepared statements)</li>
+            <li>✅ Role-based access control</li>
+            <li>✅ HTTP-only secure cookies</li>
+            <li>✅ CORS enabled for frontend</li>
+        </ul>
+
+        <!-- Error Handling -->
+        <h2>⚠️ Error Handling</h2>
+        <p>All API responses follow a consistent JSON format:</p>
+        <div class="code-block">{
+  "success": true/false,
+  "message": "Operation description",
+  "data": { /* response data */ },
+  "error": "Error message if failed"
+}</div>
+
+        <!-- HTTP Status Codes -->
+        <h3>HTTP Status Codes</h3>
+        <ul>
+            <li><strong>200 OK</strong> - Request successful</li>
+            <li><strong>201 Created</strong> - Resource created successfully</li>
+            <li><strong>400 Bad Request</strong> - Invalid input or missing fields</li>
+            <li><strong>401 Unauthorized</strong> - Authentication required</li>
+            <li><strong>403 Forbidden</strong> - Insufficient permissions</li>
+            <li><strong>404 Not Found</strong> - Resource not found</li>
+            <li><strong>405 Method Not Allowed</strong> - Wrong HTTP method</li>
+            <li><strong>500 Internal Server Error</strong> - Server error</li>
+        </ul>
+
+        <!-- Additional Resources -->
+        <h2>📖 Additional Resources</h2>
+        <ul>
+            <li><a href="QUICK_START.md">Quick Start Guide</a> - Get up and running in 3 steps</li>
+            <li><a href="DATABASE_SETUP.md">Complete Database Documentation</a> - Detailed API reference and examples</li>
+            <li><code>database/sample-data.php</code> - Load sample test data</li>
+        </ul>
+
+        <!-- Support -->
+        <h2>💬 Support & Troubleshooting</h2>
+        <p><strong>Database Connection Failed?</strong></p>
+        <ul>
+            <li>Check credentials in <code>includes/database.php</code></li>
+            <li>Verify MySQL is running</li>
+            <li>Ensure database <code>prime_home_hub</code> exists</li>
+        </ul>
+
+        <p><strong>Authentication Issues?</strong></p>
+        <ul>
+            <li>Verify token is passed in Authorization header</li>
+            <li>Check session_token in users table is not NULL</li>
+            <li>Re-login if token has expired</li>
+        </ul>
+
+        <p><strong>Product Not Showing?</strong></p>
+        <ul>
+            <li>Check API response: <code>http://localhost/api/products.php?action=list</code></li>
+            <li>Verify products in database: <code>SELECT * FROM products;</code></li>
+            <li>Check product status is 'active'</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Prime Home Hub - Furniture E-Commerce Platform</p>
+        <p>Database & API v1.0 - Production Ready</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Setup - Prime Home Hub</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 2rem;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        .content {
+            padding: 2rem;
+        }
+        .setup-step {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+        .setup-step h3 {
+            margin: 0 0 1rem 0;
+            color: #667eea;
+            font-size: 1.3rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        .btn-secondary {
+            background: #6c757d;
+        }
+        .btn-success {
+            background: #28a745;
+        }
+        .status {
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        .status.info {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+        .status.success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .status.warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+        }
+        .credentials {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            margin: 1rem 0;
+        }
+        .iframe-container {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 1rem 0;
+            height: 400px;
+        }
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗄️ Database Setup</h1>
+            <p>Prime Home Hub - Complete Database Configuration</p>
+        </div>
+        
+        <div class="content">
+            <div class="status info">
+                <strong>📋 Setup Overview:</strong> This page will help you set up the complete database for your Prime Home Hub e-commerce platform.
+            </div>
+
+            <div class="setup-step">
+                <h3>Step 1: Database Schema Setup</h3>
+                <p>This will create all necessary tables, insert sample data, and create the admin user.</p>
+                <button class="btn" onclick="runDatabaseSetup()">🚀 Run Database Setup</button>
+                <button class="btn btn-secondary" onclick="testConnection()">🔍 Test Connection</button>
+            </div>
+
+            <div id="setup-output" style="display: none;">
+                <h3>Setup Output:</h3>
+                <div class="iframe-container">
+                    <iframe id="setup-frame" src="about:blank"></iframe>
+                </div>
+            </div>
+
+            <div class="setup-step">
+                <h3>Step 2: Admin Credentials</h3>
+                <p>After setup, use these credentials to access the admin dashboard:</p>
+                <div class="credentials">
+                    <strong>Admin Email:</strong> admin@primehomehub.com<br>
+                    <strong>Admin Password:</strong> Admin@123456<br>
+                    <strong>⚠️ Important:</strong> Change this password after first login!
+                </div>
+            </div>
+
+            <div class="setup-step">
+                <h3>Step 3: Test Your Website</h3>
+                <p>Once the database is set up, test your website with these links:</p>
+                <a href="index.html" class="btn btn-success" target="_blank">🏠 Launch Website</a>
+                <a href="pages/admin-dashboard.html" class="btn btn-success" target="_blank">🎛️ Admin Dashboard</a>
+                <a href="pages/shop.html" class="btn btn-success" target="_blank">🛍️ Shop Page</a>
+            </div>
+
+            <div class="setup-step">
+                <h3>Step 4: User Registration Test</h3>
+                <p>Test the user registration and login system:</p>
+                <a href="index.html" class="btn btn-secondary" target="_blank">👤 Register New User</a>
+                <a href="pages/user-dashboard.html" class="btn btn-secondary" target="_blank">📊 User Dashboard</a>
+            </div>
+
+            <div class="status warning">
+                <strong>⚠️ Prerequisites:</strong>
+                <ul style="margin: 0.5rem 0;">
+                    <li>WAMP/XAMPP server must be running</li>
+                    <li>MySQL service must be active</li>
+                    <li>Database files must be present in /database/ folder</li>
+                </ul>
+            </div>
+
+            <div class="status info">
+                <strong>📞 Troubleshooting:</strong> If setup fails, check:
+                <ul style="margin: 0.5rem 0;">
+                    <li>MySQL server is running</li>
+                    <li>Database credentials in includes/database.php</li>
+                    <li>File permissions</li>
+                    <li>PHP error logs</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function runDatabaseSetup() {
+            const output = document.getElementById('setup-output');
+            const frame = document.getElementById('setup-frame');
+            
+            output.style.display = 'block';
+            frame.src = 'setup-database-v3.php';
+            
+            // Scroll to output
+            output.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function testConnection() {
+            const output = document.getElementById('setup-output');
+            const frame = document.getElementById('setup-frame');
+            
+            output.style.display = 'block';
+            frame.src = 'deploy.php';
+            
+            // Scroll to output
+            output.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Auto-refresh setup frame after 10 seconds
+        let refreshInterval;
+        document.getElementById('setup-output').addEventListener('click', function() {
+            clearInterval(refreshInterval);
+            refreshInterval = setInterval(() => {
+                const frame = document.getElementById('setup-frame');
+                if (frame.src && frame.src !== 'about:blank') {
+                    frame.src = frame.src;
+                }
+            }, 10000);
+        });
+    </script>
+</body>
+</html>

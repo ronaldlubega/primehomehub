@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Prime Home Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../index.html"><i class="bi bi-palette-fill"></i> Prime Home Hub</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="portfolio.html">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <h1 class="display-4 mb-2">Our Portfolio</h1>
+            <p class="lead">Before & After Transformations</p>
+        </div>
+    </section>
+
+    <!-- Filter Buttons -->
+    <section class="py-4 bg-white">
+        <div class="container">
+            <div class="d-flex gap-2 flex-wrap justify-content-center">
+                <button class="btn btn-outline-primary" onclick="filterPortfolio('all')">All Projects</button>
+                <button class="btn btn-outline-primary" onclick="filterPortfolio('residential')">Residential</button>
+                <button class="btn btn-outline-primary" onclick="filterPortfolio('commercial')">Commercial</button>
+                <button class="btn btn-outline-primary" onclick="filterPortfolio('kitchen')">Kitchen</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4" id="portfolio-grid">
+                <!-- Portfolio items will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-5">
+        <div class="container text-center">
+            <p>&copy; 2026 Prime Home Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div class="modal fade" id="projectModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="project-title"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Before</h6>
+                            <img id="project-before" src="" alt="Before" class="img-fluid rounded">
+                        </div>
+                        <div class="col-md-6">
+                            <h6>After</h6>
+                            <img id="project-after" src="" alt="After" class="img-fluid rounded">
+                        </div>
+                    </div>
+                    <p id="project-description" class="mt-3"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/app.js"></script>
+    <script>
+        const portfolioProjects = [
+            {
+                id: 1,
+                title: 'Modern Living Room Transformation',
+                category: 'residential',
+                before: 'https://via.placeholder.com/400x300?text=Before+Living+Room',
+                after: 'https://via.placeholder.com/400x300?text=After+Living+Room',
+                description: 'Transformed a dated living room into a modern space with neutral tones, new furniture, and strategic lighting.'
+            },
+            {
+                id: 2,
+                title: 'Professional Office Space',
+                category: 'commercial',
+                before: 'https://via.placeholder.com/400x300?text=Before+Office',
+                after: 'https://via.placeholder.com/400x300?text=After+Office',
+                description: 'Designed a functional and inspiring office environment with ergonomic furniture and modern aesthetics.'
+            },
+            {
+                id: 3,
+                title: 'Contemporary Kitchen Remodel',
+                category: 'kitchen',
+                before: 'https://via.placeholder.com/400x300?text=Before+Kitchen',
+                after: 'https://via.placeholder.com/400x300?text=After+Kitchen',
+                description: 'Completely renovated kitchen with new cabinetry, countertops, and modern appliances.'
+            },
+            {
+                id: 4,
+                title: 'Luxury Master Bedroom',
+                category: 'residential',
+                before: 'https://via.placeholder.com/400x300?text=Before+Bedroom',
+                after: 'https://via.placeholder.com/400x300?text=After+Bedroom',
+                description: 'Created a luxurious retreat with custom bedding, statement lighting, and premium furniture.'
+            },
+            {
+                id: 5,
+                title: 'Corporate Headquarters',
+                category: 'commercial',
+                before: 'https://via.placeholder.com/400x300?text=Before+Corporate',
+                after: 'https://via.placeholder.com/400x300?text=After+Corporate',
+                description: 'Complete redesign of corporate office spaces reflecting company brand and values.'
+            },
+            {
+                id: 6,
+                title: 'Modern Minimalist Home',
+                category: 'residential',
+                before: 'https://via.placeholder.com/400x300?text=Before+Minimalist',
+                after: 'https://via.placeholder.com/400x300?text=After+Minimalist',
+                description: 'Embraced minimalist design principles with clean lines, neutral palette, and functional spaces.'
+            }
+        ];
+
+        function loadPortfolio() {
+            const grid = document.getElementById('portfolio-grid');
+            grid.innerHTML = '';
+
+            portfolioProjects.forEach(project => {
+                const col = document.createElement('div');
+                col.className = 'col-md-6 col-lg-4 portfolio-item';
+                col.dataset.category = project.category;
+                col.innerHTML = `
+                    <div class="card h-100 cursor-pointer" onclick="openProject(${project.id})">
+                        <div class="position-relative" style="height: 250px; overflow: hidden;">
+                            <img src="${project.before}" alt="Before" style="width:100%; height:100%; object-fit:cover; position:absolute; left:0;">
+                            <img src="${project.after}" alt="After" style="width:100%; height:100%; object-fit:cover; position:absolute; left:100%; transition:left 0.3s;">
+                            <div class="position-absolute top-50 start-50 translate-middle">
+                                <button class="btn btn-light btn-sm rounded-pill">View Project</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">${project.title}</h5>
+                            <p class="text-muted text-capitalize">${project.category}</p>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(col);
+            });
+        }
+
+        function filterPortfolio(category) {
+            const items = document.querySelectorAll('.portfolio-item');
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function openProject(projectId) {
+            const project = portfolioProjects.find(p => p.id === projectId);
+            if (project) {
+                document.getElementById('project-title').textContent = project.title;
+                document.getElementById('project-before').src = project.before;
+                document.getElementById('project-after').src = project.after;
+                document.getElementById('project-description').textContent = project.description;
+                new bootstrap.Modal(document.getElementById('projectModal')).show();
+            }
+        }
+
+        loadPortfolio();
+    </script>
+</body>
+</html>

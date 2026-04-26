@@ -1,0 +1,158 @@
+[
+    {
+        "id": 1775048815,
+        "name": "mayiko@gmail.com",
+        "email": "mayiko@gmail.com",
+        "password": "$2y$10$tbwUEt6zLVVtlCp5IcIcx.kcqRRJvYuKoapnLaNcXlya2qW6DawLS",
+        "role": "client",
+        "phone": "",
+        "location": "Kampala, Uganda",
+        "gender": "",
+        "avatar": null,
+        "preferences": {
+            "currency": "UGX",
+            "newsletter": false,
+            "notifications": true
+        },
+        "address": {
+            "street": "",
+            "city": "Kampala",
+            "country": "Uganda",
+            "postal_code": "256"
+        },
+        "last_login": "2026-04-01 14:59:30",
+        "login_count": 3,
+        "status": "active",
+        "created_at": "2026-04-01 11:57:44",
+        "updated_at": "2026-04-01 14:59:30"
+    },
+    {
+        "id": 2171,
+        "name": "Jonas",
+        "email": "admin@primehomehub.com",
+        "password": "aDminPrimeHub",
+        "role": "admin",
+        "phone": "+256-708292123",
+        "location": "Kampala, Uganda",
+        "gender": "male",
+        "avatar": "uploads\/avatars\/admin.jpg",
+        "preferences": {
+            "currency": "UGX",
+            "newsletter": true,
+            "notifications": true
+        },
+        "address": {
+            "street": "123 Business Ave",
+            "city": "Kampala",
+            "country": "Uganda",
+            "postal_code": "256"
+        },
+        "last_login": "2026-03-07 15:45:00",
+        "login_count": 15,
+        "status": "active",
+        "created_at": "2026-03-07 15:15:40",
+        "updated_at": "2026-03-07 15:45:00"
+    },
+    {
+        "id": 6639,
+        "name": "Jonas",
+        "email": "jonas@gmail.com",
+        "password": "Admin123.",
+        "role": "client",
+        "phone": "+256-123456789",
+        "location": "Kampala, Uganda",
+        "gender": "male",
+        "avatar": null,
+        "preferences": {
+            "currency": "UGX",
+            "newsletter": false,
+            "notifications": true
+        },
+        "address": {
+            "street": "456 Customer St",
+            "city": "Kampala",
+            "country": "Uganda",
+            "postal_code": "256"
+        },
+        "last_login": "2026-03-07 14:30:00",
+        "login_count": 8,
+        "status": "active",
+        "created_at": "2026-03-07 15:05:09",
+        "updated_at": "2026-03-07 14:30:00"
+    },
+    {
+        "id": 1772898700,
+        "role": "client",
+        "name": "Tomas",
+        "contact": "0755049100",
+        "email": "tomas@gmail.com",
+        "location": "Ndejje",
+        "gender": "Male",
+        "password": "$2y$10$olvy8DwylEo8LVay\/EWJ\/ur9GNOB29\/qqajIarWSCLX.WVV8kmRCC",
+        "created_at": "2026-03-07 15:51:40",
+        "status": "active",
+        "last_login": "2026-04-01 16:14:47",
+        "login_count": 11,
+        "avatar": null,
+        "preferences": {
+            "currency": "UGX",
+            "newsletter": false,
+            "notifications": true
+        },
+        "address": {
+            "street": "",
+            "city": "Ndejje",
+            "country": "Uganda",
+            "postal_code": "256"
+        },
+        "updated_at": "2026-04-01 16:14:47"
+    },
+    {
+        "id": 1775047237,
+        "role": "admin",
+        "name": "Muwanji Ronald Bawande",
+        "contact": "0780247195",
+        "email": "ronald@gmail.com",
+        "location": "0.3868, 32.5126",
+        "gender": "Male",
+        "password": "$2y$10$ig4saH8xWXkGNelRb7J6XuMbRjfY9iZU5S\/aljDMKlc16uiD9rSG6",
+        "created_at": "2026-04-01 12:40:37",
+        "status": "active",
+        "login_count": 16,
+        "preferences": {
+            "currency": "UGX",
+            "newsletter": false,
+            "notifications": true
+        },
+        "address": {
+            "city": "0.3868, 32.5126",
+            "country": "Uganda",
+            "postal_code": "256"
+        },
+        "last_login": "2026-04-11 14:46:48",
+        "updated_at": "2026-04-11 14:46:48"
+    },
+    {
+        "id": 1775917974,
+        "role": "client",
+        "name": "Lubega",
+        "contact": "0780247190",
+        "email": "ronald@gmail.com",
+        "location": "Kampala, Uganda",
+        "gender": "Male",
+        "password": "$2y$10$llh7K99smQNJdFR2pYZPju1\/E8gq85Ggd1GAdEzgNKE17Ln0Rzngu",
+        "created_at": "2026-04-11 14:32:54",
+        "status": "active",
+        "login_count": 0,
+        "preferences": {
+            "currency": "UGX",
+            "newsletter": false,
+            "notifications": true
+        },
+        "address": {
+            "city": "Kampala, Uganda",
+            "country": "Uganda",
+            "postal_code": "256"
+        }
+    }
+]

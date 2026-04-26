@@ -1,0 +1,54 @@
+[
+    {
+        "id": 1,
+        "name": "Interior Design Consultation",
+        "slug": "interior-design",
+        "description": "Professional interior design consultation for your home or office space",
+        "price": 50000,
+        "duration": "2 hours",
+        "image": "services/design.jpg",
+        "category": "consultation",
+        "icon": "bi-palette",
+        "status": "active",
+        "featured": true
+    },
+    {
+        "id": 2,
+        "name": "Room Planning",
+        "slug": "room-planning",
+        "description": "Complete room layout planning and space optimization",
+        "price": 75000,
+        "duration": "3 hours",
+        "image": "services/planning.jpg",
+        "category": "planning",
+        "icon": "bi-house",
+        "status": "active",
+        "featured": true
+    },
+    {
+        "id": 3,
+        "name": "Furniture Sourcing",
+        "slug": "furniture-sourcing",
+        "description": "Curated furniture selection and procurement services",
+        "price": 100000,
+        "duration": "4 hours",
+        "image": "services/sourcing.jpg",
+        "category": "procurement",
+        "icon": "bi-cart3",
+        "status": "active",
+        "featured": true
+    },
+    {
+        "id": 4,
+        "name": "Design Consultation",
+        "slug": "design-consultation",
+        "description": "Expert design advice and consultation services",
+        "price": 35000,
+        "duration": "1 hour",
+        "image": "services/consultation.jpg",
+        "category": "consultation",
+        "icon": "bi-headset",
+        "status": "active",
+        "featured": false
+    }
+]

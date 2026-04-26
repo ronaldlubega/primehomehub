@@ -1,0 +1,32 @@
+{
+    "site_name": "Prime Home Hub",
+    "site_email": "info@primehomehub.com",
+    "site_phone": "+256-708292123",
+    "contact_email": "primehomehub@gmail.com",
+    "currency": "UGX",
+    "tax_rate": 0.18,
+    "shipping_cost": 50000,
+    "maintenance_mode": false,
+    "enable_registration": true,
+    "enable_reviews": true,
+    "enable_newsletter": true,
+    "social_media": {
+        "facebook": "https://facebook.com/primehomehub",
+        "instagram": "https://instagram.com/primehomehub",
+        "twitter": "https://twitter.com/primehomehub"
+    },
+    "addresses": {
+        "main": "Kampala, Uganda",
+        "showroom": "123 Showroom Street, Kampala"
+    },
+    "business_hours": {
+        "monday": "9:00 AM - 6:00 PM",
+        "tuesday": "9:00 AM - 6:00 PM",
+        "wednesday": "9:00 AM - 6:00 PM",
+        "thursday": "9:00 AM - 6:00 PM",
+        "friday": "9:00 AM - 6:00 PM",
+        "saturday": "10:00 AM - 4:00 PM",
+        "sunday": "Closed"
+    },
+    "updated_at": "2026-03-07 15:00:00"
+}

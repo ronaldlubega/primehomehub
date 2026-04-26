@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="User Dashboard - Prime Home Hub">
+    <title>User Dashboard - Prime Home Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../index.html">
+                <i class="bi bi-palette-fill"></i> Prime Home Hub
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="user-account" data-bs-toggle="modal" data-bs-target="#authModal">
+                            <i class="bi bi-person-circle"></i> Account
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link position-relative" href="cart.html">
+                            <i class="bi bi-cart3"></i> Cart
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-badge">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Wrapper -->
+    <div class="dashboard-wrapper">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3><i class="bi bi-speedometer2"></i> Dashboard</h3>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#" data-tab="overview" class="sidebar-link active"><i class="bi bi-graph-up"></i> Overview</a></li>
+                <li><a href="#" data-tab="profile" class="sidebar-link"><i class="bi bi-person"></i> Profile</a></li>
+                <li><a href="#" data-tab="orders" class="sidebar-link"><i class="bi bi-bag-check"></i> Orders</a></li>
+                <li><a href="#" data-tab="wishlist" class="sidebar-link"><i class="bi bi-heart"></i> Wishlist</a></li>
+                <li><a href="#" data-tab="addresses" class="sidebar-link"><i class="bi bi-geo-alt"></i> Addresses</a></li>
+                <li><hr class="my-2"></li>
+                <li><a href="#" data-tab="room-planner" class="sidebar-link"><i class="bi bi-building"></i> Room Planner</a></li>
+                <li><a href="#" data-tab="mood-boards" class="sidebar-link"><i class="bi bi-palette"></i> Mood Boards</a></li>
+                <li><hr class="my-2"></li>
+                <li><a href="#" data-tab="settings" class="sidebar-link"><i class="bi bi-gear"></i> Settings</a></li>
+                <li><a href="#" id="logout-btn"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <div>
+                    <h1 id="page-title">Dashboard Overview</h1>
+                    <p class="text-muted mb-0">Welcome back, <strong id="user-name">User</strong>!</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-outline-secondary"><i class="bi bi-download"></i> Export</button>
+                    <button class="btn btn-primary"><i class="bi bi-gear"></i> Settings</button>
+                </div>
+            </div>
+
+            <!-- TAB: Overview -->
+            <div id="tab-overview" class="tab-content">
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="bi bi-bag-check"></i></div>
+                        <div class="stat-label">Total Orders</div>
+                        <div class="stat-value" id="stat-orders">0</div>
+                        <div class="stat-change">+0 this month</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="bi bi-cash-coin"></i></div>
+                        <div class="stat-label">Total Spent</div>
+                        <div class="stat-value" id="stat-spent">$0</div>
+                        <div class="stat-change">+0% vs last month</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="bi bi-heart"></i></div>
+                        <div class="stat-label">Wishlist Items</div>
+                        <div class="stat-value" id="stat-wishlist">0</div>
+                        <div class="stat-change">Recently added</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="bi bi-award"></i></div>
+                        <div class="stat-label">Member Level</div>
+                        <div class="stat-value" id="stat-level">Bronze</div>
+                        <div class="stat-change">Since membership</div>
+                    </div>
+                </div>
+
+                <!-- Recent Orders -->
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3>Recent Orders</h3>
+                        <a href="#" data-tab="orders" class="btn btn-sm btn-outline-primary sidebar-link">View All</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="dashboard-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Date</th>
+                                    <th>Items</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recent-orders-body">
+                                <tr>
+                                    <td colspan="6" class="text-center py-4 text-muted">No orders yet. <a href="shop.html">Start shopping</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="dashboard-card">
+                            <h5><i class="bi bi-star"></i> Personalized Recommendations</h5>
+                            <p class="text-muted">Based on your shopping history</p>
+                            <a href="shop.html" class="btn btn-primary btn-sm">Browse Collections</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="dashboard-card">
+                            <h5><i class="bi bi-gift"></i> Special Offers</h5>
+                            <p class="text-muted">Exclusive deals for members</p>
+                            <a href="shop.html" class="btn btn-primary btn-sm">View Offers</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: Profile -->
+            <div id="tab-profile" class="tab-content d-none">
+                <div class="dashboard-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar" id="profile-avatar">U</div>
+                        <div class="profile-info">
+                            <h2 id="profile-name">User Name</h2>
+                            <p id="profile-email">email@example.com</p>
+                            <p class="text-muted mb-0">Member since <span id="member-since">2026</span></p>
+                        </div>
+                    </div>
+
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-info" type="button">Personal Info</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-password" type="button">Security</button>
+                        </li>
+                    </ul>
+
+                    <!-- Profile Info Tab -->
+                    <div class="tab-content mt-3">
+                        <div class="tab-pane fade show active" id="profile-info">
+                            <form id="profile-form">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">First Name</label>
+                                        <input type="text" class="form-control" id="first-name" placeholder="Enter first name">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" id="last-name" placeholder="Enter last name">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label">Email Address</label>
+                                        <input type="email" class="form-control" id="email" placeholder="Enter email" disabled>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Phone</label>
+                                        <input type="tel" class="form-control" id="phone" placeholder="+1 (555) 000-0000">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Date of Birth</label>
+                                        <input type="date" class="form-control" id="dob">
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                        <button type="button" class="btn btn-outline-secondary ms-2">Cancel</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Security Tab -->
+                        <div class="tab-pane fade" id="profile-password">
+                            <form id="password-form">
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <label class="form-label">Current Password</label>
+                                        <input type="password" class="form-control" id="current-password" placeholder="Enter current password">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label">New Password</label>
+                                        <input type="password" class="form-control" id="new-password" placeholder="Enter new password">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label">Confirm Password</label>
+                                        <input type="password" class="form-control" id="confirm-password" placeholder="Confirm new password">
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary">Update Password</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: Orders -->
+            <div id="tab-orders" class="tab-content d-none">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3>My Orders</h3>
+                        <div>
+                            <button class="btn btn-sm btn-outline-primary me-2">Filter</button>
+                            <button class="btn btn-sm btn-outline-primary">Sort</button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="dashboard-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Date</th>
+                                    <th>Items</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orders-body">
+                                <tr>
+                                    <td colspan="6" class="text-center py-4 text-muted">No orders yet. <a href="shop.html">Start shopping</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: Wishlist -->
+            <div id="tab-wishlist" class="tab-content d-none">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3>My Wishlist</h3>
+                        <button class="btn btn-sm btn-outline-danger">Clear All</button>
+                    </div>
+                    <div class="row" id="wishlist-grid">
+                        <div class="col-12 py-4 text-center text-muted">
+                            <i class="bi bi-heart"></i> Your wishlist is empty. <a href="shop.html">Add items</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: Addresses -->
+            <div id="tab-addresses" class="tab-content d-none">
+                <div class="row g-3">
+                    <div class="col-12">
+                        <button class="btn btn-primary mb-3"><i class="bi bi-plus"></i> Add New Address</button>
+                    </div>
+                    <div id="addresses-container" class="col-12">
+                        <div class="text-center py-4 text-muted">
+                            <p>No addresses saved yet. Add your first address.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: Room Planner -->
+            <div id="tab-room-planner" class="tab-content d-none">
+                <div class="dashboard-card">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <h3><i class="bi bi-building"></i> Room Planner</h3>
+                            <p class="text-muted">Design your perfect room with our interactive furniture planner</p>
+                        </div>
+                        <a href="../room-planner.html" target="_blank" class="btn btn-primary"><i class="bi bi-arrow-up-right"></i> Open Planner</a>
+                    </div>
+                    <div class="alert alert-info" role="alert">
+                        <i class="bi bi-info-circle"></i> Click the button above to open the full Room Planner interface. You can arrange furniture, save designs, and export them as images.
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <h5 class="mb-3">Your Saved Room Plans</h5>
+                    <div id="saved-room-plans" class="row g-3">
+                        <div class="col-12">
+                            <p class="text-muted text-center">No saved room plans yet. Create your first design!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: Mood Boards -->
+            <div id="tab-mood-boards" class="tab-content d-none">
+                <div class="dashboard-card">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <h3><i class="bi bi-palette"></i> Mood Boards</h3>
+                            <p class="text-muted">Collect and organize design inspiration for your projects</p>
+                        </div>
+                        <a href="../mood-boards.html" target="_blank" class="btn btn-primary"><i class="bi bi-arrow-up-right"></i> Open Mood Boards</a>
+                    </div>
+                    <div class="alert alert-info" role="alert">
+                        <i class="bi bi-info-circle"></i> Click the button above to open the full Mood Boards interface. Create collections, add products and colors, and share your designs.
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <h5 class="mb-3">Your Mood Board Collections</h5>
+                    <div id="saved-mood-boards" class="row g-3">
+                        <div class="col-12">
+                            <p class="text-muted text-center">No mood boards yet. Start creating your design collections!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: Settings -->
+            <div id="tab-settings" class="tab-content d-none">
+                <div class="dashboard-card">
+                    <h3 class="mb-3">Account Settings</h3>
+                    <form id="settings-form">
+                        <div class="form-group">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="email-notifications" checked>
+                                <label class="form-check-label" for="email-notifications">
+                                    <strong>Email Notifications</strong>
+                                    <br><small class="text-muted">Receive order updates and promotions</small>
+                                </label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="sms-notifications">
+                                <label class="form-check-label" for="sms-notifications">
+                                    <strong>SMS Notifications</strong>
+                                    <br><small class="text-muted">Get delivery updates via SMS</small>
+                                </label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="marketing-emails">
+                                <label class="form-check-label" for="marketing-emails">
+                                    <strong>Marketing Emails</strong>
+                                    <br><small class="text-muted">Exclusive deals and new product launches</small>
+                                </label>
+                            </div>
+                        </div>
+                        <hr>
+                        <button type="submit" class="btn btn-primary">Save Preferences</button>
+                    </form>
+                </div>
+
+                <div class="dashboard-card mt-3">
+                    <h3 class="mb-3 text-danger">Danger Zone</h3>
+                    <p class="text-muted">Once you delete your account, there is no going back. Please be certain.</p>
+                    <button class="btn btn-danger"><i class="bi bi-trash"></i> Delete Account</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="modal fade" id="authModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs mb-3" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#login-tab">Login</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#register-tab">Register</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="login-tab">
+                            <form id="login-form">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="login-email" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="login-password" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Login</button>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="register-tab">
+                            <form id="register-form">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="register-name" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="register-email" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="register-password" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Register</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>

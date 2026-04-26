@@ -1,0 +1,146 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Modern Sofa",
+      "slug": "modern-sofa",
+      "sku": "SOFA-001",
+      "category_id": 1,
+      "price": 450000,
+      "sale_price": 399000,
+      "cost_price": 250000,
+      "currency": "UGX",
+      "stock_quantity": 15,
+      "stock_status": "in_stock",
+      "weight": 25.5,
+      "dimensions": {
+        "length": 200,
+        "width": 90,
+        "height": 85
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop"
+      ],
+      "description": "Elegant modern sofa perfect for contemporary living rooms with premium fabric and sturdy construction",
+      "short_description": "Comfortable 3-seater modern sofa",
+      "features": [
+        "Premium fabric upholstery",
+        "Removable cushions",
+        "Hardwood frame",
+        "Stain resistant",
+        "Easy assembly"
+      ],
+      "rating": 4.5,
+      "reviews_count": 23,
+      "tags": ["modern", "comfortable", "3-seater", "contemporary"],
+      "status": "active",
+      "featured": true,
+      "created_at": "2026-03-01 10:00:00",
+      "updated_at": "2026-03-07 14:30:00"
+    },
+    {
+      "id": 2,
+      "name": "Coffee Table",
+      "slug": "coffee-table",
+      "sku": "TABLE-001",
+      "category_id": 1,
+      "price": 320000,
+      "sale_price": null,
+      "cost_price": 180000,
+      "currency": "UGX",
+      "stock_quantity": 8,
+      "stock_status": "in_stock",
+      "weight": 15.2,
+      "dimensions": {
+        "length": 120,
+        "width": 60,
+        "height": 45
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1555939594-58d7cb561404?w=400&h=300&fit=crop"
+      ],
+      "description": "Stylish wood coffee table with storage drawers and modern design",
+      "short_description": "Wood coffee table with storage",
+      "features": [
+        "Solid wood construction",
+        "Built-in storage drawers",
+        "Scratch-resistant finish",
+        "Easy to clean"
+      ],
+      "rating": 4.2,
+      "reviews_count": 18,
+      "tags": ["wood", "storage", "modern", "living room"],
+      "status": "active",
+      "featured": false,
+      "created_at": "2026-03-01 10:00:00",
+      "updated_at": "2026-03-07 14:30:00"
+    },
+    {
+      "id": 3,
+      "name": "Office Chair",
+      "slug": "office-chair",
+      "sku": "CHAIR-001",
+      "category_id": 3,
+      "price": 85000,
+      "sale_price": null,
+      "cost_price": 45000,
+      "currency": "UGX",
+      "stock_quantity": 20,
+      "stock_status": "in_stock",
+      "weight": 12.5,
+      "dimensions": {
+        "length": 65,
+        "width": 65,
+        "height": 120
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1592078615290-033ee584e267?w=400&h=300&fit=crop"
+      ],
+      "description": "Comfortable ergonomic office chair with lumbar support and adjustable height",
+      "short_description": "Ergonomic office chair",
+      "features": [
+        "Ergonomic design",
+        "Lumbar support",
+        "Adjustable height",
+        "Breathable mesh back",
+        "360-degree swivel"
+      ],
+      "rating": 4.6,
+      "reviews_count": 31,
+      "tags": ["ergonomic", "office", "adjustable", "comfortable"],
+      "status": "active",
+      "featured": true,
+      "created_at": "2026-03-01 10:00:00",
+      "updated_at": "2026-03-07 14:30:00"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Living Room",
+      "slug": "living-room",
+      "description": "Couches, tables, storage, and decor for living spaces"
+    },
+    {
+      "id": 2,
+      "name": "Bedroom",
+      "slug": "bedroom",
+      "description": "Beds, nightstands, lamps, and bedroom furniture"
+    },
+    {
+      "id": 3,
+      "name": "Office",
+      "slug": "office",
+      "description": "Desks, chairs, organizers, and office solutions"
+    },
+    {
+      "id": 4,
+      "name": "Decor",
+      "slug": "decor",
+      "description": "Decorative items, art, and accessories"
+    }
+  ],
+  "users": [],
+  "orders": []
+}

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Prime Home Hub - Interior Design & Premium Furniture Shop">
+    <meta name="keywords" content="interior design, furniture, home decor, modern design">
+    <title>Prime Home Hub - Interior Design & Furniture Shop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-palette-fill"></i> Prime Home Hub
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pages/about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pages/services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pages/portfolio.html">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pages/shop.html">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pages/visualizer.html">Visualizer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pages/contact.html">Contact</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="user-account" data-bs-toggle="modal" data-bs-target="#authModal">
+                            <i class="bi bi-person-circle"></i> Account
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link position-relative" href="pages/cart.html">
+                            <i class="bi bi-cart3"></i> Cart
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-badge">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section bg-dark text-white">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://via.placeholder.com/1920x600?text=Modern+Living+Room" class="d-block w-100" alt="Living Room Design">
+                    <div class="carousel-caption d-none d-md-block hero-caption">
+                        <h1 class="display-3 fw-bold">Transform Your Space</h1>
+                        <p class="lead">Award-Winning Interior Design & Premium Furniture</p>
+                        <a href="pages/shop.html" class="btn btn-primary btn-lg me-2">Shop Now</a>
+                        <a href="pages/contact.html" class="btn btn-outline-light btn-lg">Book Consultation</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://via.placeholder.com/1920x600?text=Modern+Bedroom" class="d-block w-100" alt="Bedroom Design">
+                    <div class="carousel-caption d-none d-md-block hero-caption">
+                        <h1 class="display-3 fw-bold">Elegant Comfort</h1>
+                        <p class="lead">Curated Collections for Every Style</p>
+                        <a href="pages/shop.html" class="btn btn-primary btn-lg me-2">Explore</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://via.placeholder.com/1920x600?text=Modern+Office" class="d-block w-100" alt="Office Design">
+                    <div class="carousel-caption d-none d-md-block hero-caption">
+                        <h1 class="display-3 fw-bold">Professional Spaces</h1>
+                        <p class="lead">Commercial Design Excellence</p>
+                        <a href="pages/shop.html" class="btn btn-primary btn-lg me-2">View Collection</a>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Featured Collections -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 display-5">Featured Collections</h2>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="collection-card">
+                        <img src="https://via.placeholder.com/400x300?text=Living+Room" alt="Living Room">
+                        <div class="collection-overlay">
+                            <h3>Living Room</h3>
+                            <a href="pages/shop.html?category=living-room" class="btn btn-light">Shop Collection</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="collection-card">
+                        <img src="https://via.placeholder.com/400x300?text=Bedroom" alt="Bedroom">
+                        <div class="collection-overlay">
+                            <h3>Bedroom</h3>
+                            <a href="pages/shop.html?category=bedroom" class="btn btn-light">Shop Collection</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="collection-card">
+                        <img src="https://via.placeholder.com/400x300?text=Office" alt="Office">
+                        <div class="collection-overlay">
+                            <h3>Office</h3>
+                            <a href="pages/shop.html?category=office" class="btn btn-light">Shop Collection</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="collection-card">
+                        <img src="https://via.placeholder.com/400x300?text=Decor" alt="Decor">
+                        <div class="collection-overlay">
+                            <h3>Decor</h3>
+                            <a href="pages/shop.html?category=decor" class="btn btn-light">Shop Collection</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Preview -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 display-5">Our Services</h2>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card text-center">
+                        <i class="bi bi-pencil-square display-4 text-primary mb-3"></i>
+                        <h3>Residential Design</h3>
+                        <p>Transform your home with our expert residential design services tailored to your lifestyle.</p>
+                        <a href="pages/services.html" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card text-center">
+                        <i class="bi bi-building display-4 text-primary mb-3"></i>
+                        <h3>Commercial Design</h3>
+                        <p>Professional spaces designed for productivity and aesthetic excellence in corporate environments.</p>
+                        <a href="pages/services.html" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card text-center">
+                        <i class="bi bi-chat-dots display-4 text-primary mb-3"></i>
+                        <h3>Expert Consultation</h3>
+                        <p>Get personalized design advice from our experienced consultants and interior design experts.</p>
+                        <a href="pages/contact.html" class="btn btn-outline-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog removed -->
+
+    <!-- Call to Action -->
+    <section class="cta-section text-white py-5">
+        <div class="container text-center">
+            <h2 class="display-4 mb-3">Ready to Transform Your Space?</h2>
+            <p class="lead mb-4">Schedule a free consultation with our award-winning design experts today.</p>
+            <a href="pages/contact.html" class="btn btn-light btn-lg">Book Your Free Consultation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-5">
+        <div class="container">
+            <div class="row g-4 mb-4">
+                <div class="col-lg-3 col-md-6">
+                    <h5><i class="bi bi-palette-fill"></i> Prime Home Hub</h5>
+                    <p>Your premier destination for interior design expertise and premium furniture collections.</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="pages/shop.html" class="text-decoration-none">Shop</a></li>
+                        <li><a href="pages/portfolio.html" class="text-decoration-none">Portfolio</a></li>
+                        <li><a href="pages/blog.html" class="text-decoration-none">Blog</a></li>
+                        <li><a href="pages/contact.html" class="text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Contact Info</h5>
+                    <p><i class="bi bi-telephone"></i> (555) 123-4567<br>
+                    <i class="bi bi-envelope"></i> info@designhaven.com<br>
+                    <i class="bi bi-geo-alt"></i> 123 Design Street, NY</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Follow Us</h5>
+                    <a href="#" class="text-decoration-none me-3"><i class="bi bi-facebook fs-5"></i></a>
+                    <a href="#" class="text-decoration-none me-3"><i class="bi bi-instagram fs-5"></i></a>
+                    <a href="#" class="text-decoration-none me-3"><i class="bi bi-twitter fs-5"></i></a>
+                    <a href="#" class="text-decoration-none"><i class="bi bi-pinterest fs-5"></i></a>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2026 Prime Home Hub. All rights reserved. | <a href="#" class="text-decoration-none">Privacy Policy</a> | <a href="#" class="text-decoration-none">Terms & Conditions</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div class="modal fade" id="authModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Account</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs mb-3" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login-content" type="button" role="tab">Login</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register-content" type="button" role="tab">Register</button>
+                        </li>
+                    </ul>
+                    
+                    <div class="tab-content">
+                        <div id="login-content" class="tab-pane fade show active" role="tabpanel">
+                            <form id="login-form">
+                                <div class="mb-3">
+                                    <label for="login-email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="login-email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="login-password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="login-password" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Login</button>
+                            </form>
+                        </div>
+                        
+                        <div id="register-content" class="tab-pane fade" role="tabpanel">
+                            <form id="register-form">
+                                <div class="mb-3">
+                                    <label for="register-name" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="register-name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="register-email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="register-email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="register-password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="register-password" required>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input class="form-check-input" type="checkbox" id="terms-check" required>
+                                    <label class="form-check-label" for="terms-check">
+                                        I agree to the terms and conditions
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Register</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
